@@ -17,21 +17,71 @@
       <div v-show="activeTab === 'cr'" class="card theory-section">
         <h3>Центр сопротивления (ЦС)</h3>
         <div class="content-block">
-          <p><strong>Определение:</strong> Центр сопротивления — это точка, через которую должна проходить равнодействующая сила для корпусного перемещения зуба без вращения.</p>
+          <p><strong>Определение:</strong> Центр сопротивления (ЦС) — это фундаментальная биомеханическая точка зуба, которая определяет характер его перемещения. Это точка, через которую должна проходить равнодействующая сила для корпусного перемещения зуба без вращения.</p>
+
+          <div class="highlight-box special">
+            <h4>🎯 Что такое ЦС простыми словами:</h4>
+            <p>Представьте, что зуб — это стержень в песке. Если вы толкаете его сверху (выше центра), он наклоняется. Если толкаете точно в центре — двигается всем телом. Если толкаете снизу центра — наклоняется в обратную сторону. Центр сопротивления — это та самая "балансировочная точка" зуба.</p>
+          </div>
 
           <div class="highlight-box">
-            <h4>Локализация ЦС:</h4>
+            <h4>📍 Локализация ЦС:</h4>
             <ul>
-              <li><strong>Однокорневые зубы:</strong> На 1/3 расстояния от апекса корня до альвеолярного гребня</li>
-              <li><strong>Многокорневые зубы:</strong> В области бифуркации корней</li>
-              <li><strong>При резорбции кости:</strong> ЦС смещается апикально</li>
+              <li><strong>Однокорневые зубы (резцы, клыки, премоляры):</strong>
+                <ul>
+                  <li>На 1/3 расстояния от апекса корня до альвеолярного гребня</li>
+                  <li>Примерно на уровне 4-5 мм от альвеолярного гребня (для стандартного корня 13 мм)</li>
+                  <li>Находится ВНУТРИ альвеолярной кости</li>
+                </ul>
+              </li>
+              <li><strong>Многокорневые зубы (моляры):</strong>
+                <ul>
+                  <li>В области бифуркации (раздвоения) корней</li>
+                  <li>Примерно на уровне 1/2 длины корня</li>
+                  <li>Обычно на 6-7 мм от альвеолярного гребня</li>
+                </ul>
+              </li>
+              <li><strong>При резорбции кости (пародонтит, возрастные изменения):</strong>
+                <ul>
+                  <li>ЦС смещается апикально (ближе к верхушке корня)</li>
+                  <li>Это затрудняет ортодонтическое лечение</li>
+                  <li>Требуется пересчет биомеханических параметров</li>
+                </ul>
+              </li>
             </ul>
           </div>
 
           <div class="formula-box">
-            <p><strong>Расстояние от вершины альвеолярного гребня:</strong></p>
-            <code>h<sub>цс</sub> = L / 3</code>
-            <p class="formula-note">где L — длина корня зуба</p>
+            <p><strong>📐 Формула расчета положения ЦС:</strong></p>
+            <code>h<sub>ЦС</sub> = L / 3</code>
+            <div class="formula-params">
+              <div class="param-explain">
+                <span class="param-letter-big">h<sub>ЦС</sub></span>
+                <span class="param-desc">
+                  <strong>Расстояние от альвеолярного гребня до ЦС</strong><br>
+                  Измеряется в миллиметрах. Это вертикальное расстояние от края кости (там, где заканчивается десна и начинается зуб) до центра сопротивления.
+                </span>
+              </div>
+              <div class="param-explain">
+                <span class="param-letter-big">L</span>
+                <span class="param-desc">
+                  <strong>Длина корня зуба</strong><br>
+                  Измеряется от апекса (верхушки корня) до альвеолярного гребня. Средние значения: резцы 12-13 мм, клыки 15-17 мм, премоляры 13-14 мм, моляры 12-13 мм.
+                </span>
+              </div>
+            </div>
+            <p class="formula-example"><strong>Пример расчета:</strong> Если длина корня L = 12 мм, то h<sub>ЦС</sub> = 12 / 3 = 4 мм от альвеолярного гребня.</p>
+          </div>
+
+          <div class="clinical-note-box">
+            <h4>💡 Клиническое значение:</h4>
+            <p><strong>Почему ЦС так важен?</strong> От положения ЦС зависит, КАК будет двигаться зуб:</p>
+            <ul>
+              <li><strong>Сила ЧЕРЕЗ ЦС</strong> → корпусное перемещение (коронка и корень двигаются одинаково)</li>
+              <li><strong>Сила ВЫШЕ ЦС</strong> → наклон (коронка двигается больше, корень меньше)</li>
+              <li><strong>Сила НИЖЕ ЦС</strong> → торк (корень двигается больше, коронка меньше)</li>
+            </ul>
+            <p>Поскольку брекет находится на коронке (намного выше ЦС), для корпусного перемещения нужен компенсирующий момент!</p>
           </div>
         </div>
       </div>
@@ -39,40 +89,114 @@
       <div v-show="activeTab === 'forces'" class="card theory-section">
         <h3>Система сил в ортодонтии</h3>
         <div class="content-block">
-          <h4>Типы сил:</h4>
+          <p><strong>Основа биомеханики:</strong> Любое ортодонтическое перемещение - это результат действия сил и моментов на зуб. Понимание системы сил - ключ к предсказуемому лечению.</p>
+
+          <h4>⚡ Типы сил:</h4>
 
           <div class="force-types">
             <div class="force-card">
-              <h5>🔵 Одиночная сила</h5>
-              <p>Вызывает наклонно-вращательное перемещение относительно ЦС</p>
+              <h5>🔵 Одиночная сила (F)</h5>
+              <p><strong>Что это:</strong> Единственная сила, приложенная к зубу в одной точке (обычно на брекете)</p>
+              <p><strong>Что происходит:</strong> Зуб наклоняется вокруг ЦС - коронка двигается больше, чем корень</p>
               <div class="formula-box">
                 <code>F = m × a</code>
+                <p class="formula-note"><strong>m</strong> - масса (вес зуба и окружающих тканей)<br><strong>a</strong> - ускорение перемещения</p>
+              </div>
+              <div class="clinical-note">
+                <strong>Клинический пример:</strong> Съемная пластинка с пружиной на один зуб - создает одиночную силу, зуб наклоняется.
               </div>
             </div>
 
             <div class="force-card">
-              <h5>🔄 Момент пары сил</h5>
-              <p>Вызывает чистое вращение зуба вокруг ЦС</p>
+              <h5>🔄 Момент пары сил (M)</h5>
+              <p><strong>Что это:</strong> Две равные противоположно направленные силы, приложенные на расстоянии друг от друга</p>
+              <p><strong>Что происходит:</strong> Зуб вращается вокруг ЦС без линейного перемещения</p>
               <div class="formula-box">
                 <code>M = F × d</code>
-                <p class="formula-note">d — плечо силы</p>
+                <div class="formula-params">
+                  <p class="formula-note">
+                    <strong>M</strong> — момент силы (г·мм) - вращающий эффект<br>
+                    <strong>F</strong> — величина каждой силы (г)<br>
+                    <strong>d</strong> — плечо силы (мм) - расстояние между силами
+                  </p>
+                </div>
+              </div>
+              <div class="clinical-note">
+                <strong>Клинический пример:</strong> Прямоугольная дуга в прямоугольном пазе брекета создает момент - зуб вращается на месте.
               </div>
             </div>
 
             <div class="force-card">
-              <h5>⚖️ Комбинированная система</h5>
-              <p>Сила + момент = различные типы перемещений</p>
+              <h5>⚖️ Комбинированная система (Сила + Момент)</h5>
+              <p><strong>Что это:</strong> Одновременное действие силы и момента на зуб</p>
+              <p><strong>Что происходит:</strong> Зависит от соотношения M/F - можем получить любой тип перемещения!</p>
+              <div class="clinical-note">
+                <strong>Это основа современной ортодонтии!</strong> Брекет-система создает и силу (от дуги), и момент (от взаимодействия дуги с пазом). Меняя M/F, мы контролируем тип перемещения.
+              </div>
             </div>
           </div>
 
-          <div class="highlight-box">
-            <h4>Соотношение момент/сила (M/F):</h4>
-            <ul>
-              <li><strong>M/F = 0:</strong> Наклонно-вращательное перемещение</li>
-              <li><strong>M/F = 7:1 (для однокорневых):</strong> Корпусное перемещение</li>
-              <li><strong>M/F = 10:1:</strong> Корневое перемещение (торк)</li>
-              <li><strong>M/F = 12:1:</strong> Выраженное корневое перемещение</li>
-            </ul>
+          <div class="highlight-box special">
+            <h4>📊 Соотношение момент/сила (M/F) - САМОЕ ВАЖНОЕ!</h4>
+            <p><strong>M/F определяет ТИП перемещения зуба:</strong></p>
+
+            <div class="mf-ratio-explanation">
+              <div class="mf-item">
+                <div class="mf-value">M/F = 0</div>
+                <div class="mf-type">Наклонно-вращательное (неконтролируемое наклонение)</div>
+                <div class="mf-desc">
+                  <strong>Что происходит:</strong> Только сила, без момента. Зуб наклоняется вокруг ЦС.<br>
+                  <strong>Движение:</strong> Коронка >> Корень (коронка двигается в 3-4 раза больше)<br>
+                  <strong>Когда используется:</strong> Съемные аппараты, начальное выравнивание<br>
+                  <strong>Недостаток:</strong> Неконтролируемое положение корня
+                </div>
+              </div>
+
+              <div class="mf-item optimal">
+                <div class="mf-value">M/F = 7-8:1</div>
+                <div class="mf-type">Корпусное перемещение (однокорневые зубы)</div>
+                <div class="mf-desc">
+                  <strong>Что происходит:</strong> Сила + компенсирующий момент = параллельное перемещение<br>
+                  <strong>Движение:</strong> Коронка = Корень (двигаются одинаково)<br>
+                  <strong>Когда используется:</strong> Закрытие промежутков, ретракция фронтальных<br>
+                  <strong>Преимущество:</strong> Контролируемое перемещение всего зуба<br>
+                  <strong>Как создать:</strong> Прямоугольная дуга 0.019x0.025" в пазе 0.022"
+                </div>
+              </div>
+
+              <div class="mf-item">
+                <div class="mf-value">M/F = 10-12:1</div>
+                <div class="mf-type">Корневое перемещение (торк)</div>
+                <div class="mf-desc">
+                  <strong>Что происходит:</strong> Большой момент преодолевает силу - корень двигается больше<br>
+                  <strong>Движение:</strong> Корень >> Коронка (корень двигается больше)<br>
+                  <strong>Когда используется:</strong> Коррекция инклинации резцов, параллелизация корней<br>
+                  <strong>Как создать:</strong> Торк в дуге, прямоугольная дуга с большим заполнением паза
+                </div>
+              </div>
+
+              <div class="mf-item">
+                <div class="mf-value">M/F = 5:1</div>
+                <div class="mf-type">Контролируемый наклон</div>
+                <div class="mf-desc">
+                  <strong>Что происходит:</strong> Небольшой момент частично контролирует наклон<br>
+                  <strong>Движение:</strong> Коронка > Корень (но меньше чем при M/F=0)<br>
+                  <strong>Когда используется:</strong> Начальные этапы выравнивания
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="clinical-note-box">
+            <h4>💡 Практическое применение:</h4>
+            <p><strong>Как врач контролирует M/F?</strong></p>
+            <ol>
+              <li><strong>Размер и форма дуги:</strong> Прямоугольная дуга создает больший момент, чем круглая</li>
+              <li><strong>Заполнение паза:</strong> Чем плотнее дуга в пазу, тем больше момент</li>
+              <li><strong>Материал дуги:</strong> Жесткие дуги (SS) создают больший момент</li>
+              <li><strong>Торк в дуге:</strong> Изгибы в дуге увеличивают момент</li>
+              <li><strong>Активация:</strong> Степень активации дуги влияет на соотношение M/F</li>
+            </ol>
           </div>
         </div>
       </div>
@@ -423,5 +547,137 @@ const activeTab = ref('cr')
 .methodology-details li {
   margin: 0.75rem 0;
   padding-left: 1rem;
+}
+
+/* Дополнительные стили для улучшенных объяснений */
+.formula-params {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+}
+
+.param-explain {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.param-letter-big {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #667eea;
+  font-family: 'Times New Roman', serif;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.param-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.8;
+  color: #2c3e50;
+}
+
+.param-desc strong {
+  color: #667eea;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.formula-example {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #e8f5e9;
+  border-radius: 6px;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.clinical-note-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border-radius: 12px;
+  border-left: 4px solid #ff9800;
+}
+
+.clinical-note-box h4 {
+  color: #e65100;
+  margin-bottom: 1rem;
+}
+
+.clinical-note-box ul,
+.clinical-note-box ol {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.clinical-note-box li {
+  margin: 0.75rem 0;
+  line-height: 1.7;
+}
+
+.mf-ratio-explanation {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.mf-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.mf-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mf-item.optimal {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-left-color: #4caf50;
+}
+
+.mf-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #667eea;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.5rem;
+}
+
+.mf-item.optimal .mf-value {
+  color: #2e7d32;
+}
+
+.mf-type {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.mf-desc {
+  line-height: 1.9;
+  color: #555;
+}
+
+.mf-desc strong {
+  color: #1e40af;
+  font-weight: 600;
 }
 </style>

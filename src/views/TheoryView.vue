@@ -22,6 +22,47 @@
           <div class="highlight-box special">
             <h4>🎯 Что такое ЦС простыми словами:</h4>
             <p>Представьте, что зуб — это стержень в песке. Если вы толкаете его сверху (выше центра), он наклоняется. Если толкаете точно в центре — двигается всем телом. Если толкаете снизу центра — наклоняется в обратную сторону. Центр сопротивления — это та самая "балансировочная точка" зуба.</p>
+
+            <div class="visual-example">
+              <div class="example-grid">
+                <div class="example-item">
+                  <div class="tooth-diagram tipping-above">
+                    <div class="tooth-body">
+                      <div class="crown">🦷</div>
+                      <div class="root"></div>
+                      <div class="cr-dot">•</div>
+                      <div class="force-arrow above">→</div>
+                    </div>
+                    <div class="movement-result">↺ Наклон</div>
+                  </div>
+                  <p class="example-label">Сила выше ЦС</p>
+                </div>
+                <div class="example-item">
+                  <div class="tooth-diagram bodily">
+                    <div class="tooth-body">
+                      <div class="crown">🦷</div>
+                      <div class="root"></div>
+                      <div class="cr-dot">•</div>
+                      <div class="force-arrow at-cr">→</div>
+                    </div>
+                    <div class="movement-result">⇒ Корпусное</div>
+                  </div>
+                  <p class="example-label">Сила через ЦС</p>
+                </div>
+                <div class="example-item">
+                  <div class="tooth-diagram tipping-below">
+                    <div class="tooth-body">
+                      <div class="crown">🦷</div>
+                      <div class="root"></div>
+                      <div class="cr-dot">•</div>
+                      <div class="force-arrow below">→</div>
+                    </div>
+                    <div class="movement-result">↻ Торк</div>
+                  </div>
+                  <p class="example-label">Сила ниже ЦС</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="highlight-box">
@@ -413,6 +454,12 @@ const activeTab = ref('cr')
   padding: 1.5rem;
   margin: 1.5rem 0;
   border-radius: 8px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .highlight-box {
+  background: rgba(124, 143, 240, 0.15);
+  border-left: 4px solid #7c8ff0;
 }
 
 .highlight-box.special {
@@ -420,9 +467,19 @@ const activeTab = ref('cr')
   border-left: 4px solid #764ba2;
 }
 
+.dark-theme .highlight-box.special {
+  background: linear-gradient(135deg, rgba(124, 143, 240, 0.2) 0%, rgba(142, 91, 184, 0.2) 100%);
+  border-left: 4px solid #8e5bb8;
+}
+
 .highlight-box h4 {
   color: #667eea;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.dark-theme .highlight-box h4 {
+  color: #9fa8da;
 }
 
 .highlight-box ul {
@@ -441,6 +498,12 @@ const activeTab = ref('cr')
   margin: 1rem 0;
   border-radius: 8px;
   text-align: center;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .formula-box {
+  background: rgba(255, 193, 7, 0.15);
+  border-color: #ffb300;
 }
 
 .formula-box code {
@@ -470,6 +533,13 @@ const activeTab = ref('cr')
   padding: 1.5rem;
   border-radius: 8px;
   border-left: 4px solid #667eea;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .force-card,
+.dark-theme .movement-card {
+  background: rgba(42, 42, 62, 0.6);
+  border-left-color: #7c8ff0;
 }
 
 .force-card h5,
@@ -506,10 +576,28 @@ const activeTab = ref('cr')
   background: #667eea;
   color: white;
   font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.dark-theme .comparison-table th {
+  background: #7c8ff0;
 }
 
 .comparison-table tr:hover {
   background: #f8f9fa;
+  transition: background 0.3s ease;
+}
+
+.dark-theme .comparison-table tr:hover {
+  background: rgba(124, 143, 240, 0.1);
+}
+
+.dark-theme .comparison-table {
+  color: var(--text-color);
+}
+
+.dark-theme .comparison-table td {
+  border-bottom-color: var(--border-color);
 }
 
 .principle-item {
@@ -566,6 +654,12 @@ const activeTab = ref('cr')
   background: white;
   border-radius: 8px;
   border-left: 4px solid #667eea;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .param-explain {
+  background: rgba(42, 42, 62, 0.6);
+  border-left-color: #7c8ff0;
 }
 
 .param-letter-big {
@@ -608,11 +702,22 @@ const activeTab = ref('cr')
   background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
   border-radius: 12px;
   border-left: 4px solid #ff9800;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .clinical-note-box {
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.2) 0%, rgba(255, 152, 0, 0.15) 100%);
+  border-left-color: #ffb74d;
 }
 
 .clinical-note-box h4 {
   color: #e65100;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.dark-theme .clinical-note-box h4 {
+  color: #ffb74d;
 }
 
 .clinical-note-box ul,
@@ -640,14 +745,28 @@ const activeTab = ref('cr')
   transition: all 0.3s ease;
 }
 
+.dark-theme .mf-item {
+  background: rgba(42, 42, 62, 0.6);
+  border-left-color: #7c8ff0;
+}
+
 .mf-item:hover {
   transform: translateX(5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+.dark-theme .mf-item:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
 .mf-item.optimal {
   background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
   border-left-color: #4caf50;
+}
+
+.dark-theme .mf-item.optimal {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0.15) 100%);
+  border-left-color: #66bb6a;
 }
 
 .mf-value {
@@ -679,5 +798,178 @@ const activeTab = ref('cr')
 .mf-desc strong {
   color: #1e40af;
   font-weight: 600;
+}
+
+/* Визуальные примеры с анимацией */
+.visual-example {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-theme .visual-example {
+  background: rgba(42, 42, 62, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.example-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.example-item {
+  text-align: center;
+}
+
+.tooth-diagram {
+  position: relative;
+  height: 180px;
+  background: linear-gradient(to bottom, #e3f2fd 0%, #f5deb3 50%);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooth-diagram:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.tooth-body {
+  position: relative;
+  width: 40px;
+  height: 120px;
+  margin: 1rem auto;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooth-diagram.tipping-above:hover .tooth-body {
+  transform: rotate(-8deg);
+  transform-origin: bottom center;
+}
+
+.tooth-diagram.bodily:hover .tooth-body {
+  transform: translateX(15px);
+}
+
+.tooth-diagram.tipping-below:hover .tooth-body {
+  transform: rotate(8deg);
+  transform-origin: top center;
+}
+
+.crown {
+  font-size: 2.5rem;
+  line-height: 1;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.root {
+  width: 20px;
+  height: 60px;
+  background: linear-gradient(to bottom, #fff8dc, #daa520);
+  margin: -5px auto 0;
+  border-radius: 0 0 10px 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cr-dot {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #f44336;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.3), 0 0 8px rgba(244, 67, 54, 0.5);
+  animation: pulse 2s infinite;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.3), 0 0 8px rgba(244, 67, 54, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(244, 67, 54, 0.2), 0 0 12px rgba(244, 67, 54, 0.6);
+  }
+}
+
+.force-arrow {
+  position: absolute;
+  left: -30px;
+  font-size: 2rem;
+  color: #2196f3;
+  font-weight: bold;
+  animation: slideIn 1.5s ease-in-out infinite;
+  text-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+.force-arrow.above {
+  top: 10px;
+}
+
+.force-arrow.at-cr {
+  top: 55%;
+  transform: translateY(-50%);
+}
+
+.force-arrow.below {
+  bottom: 10px;
+}
+
+@keyframes slideIn {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+}
+
+.movement-result {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #4caf50;
+  text-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.example-label {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .example-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 </style>

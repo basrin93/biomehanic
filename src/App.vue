@@ -137,7 +137,7 @@ body.dark-theme {
 }
 
 .dark-theme .app-header h1 {
-  color: #e0e0e0;
+  color: #ffffff;
 }
 
 .subtitle {
@@ -160,7 +160,7 @@ body.dark-theme {
 }
 
 .dark-theme .author {
-  color: #b0b0b0;
+  color: #ffffff;
 }
 
 .app-navigation {
@@ -189,7 +189,7 @@ body.dark-theme {
 }
 
 .dark-theme .nav-link {
-  color: #e0e0e0;
+  color: #ffffff;
 }
 
 .nav-link:hover {
@@ -231,6 +231,6 @@ body.dark-theme {
 .dark-theme .app-footer {
   background: rgba(26, 26, 46, 0.9);
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-  color: #b0b0b0;
+  color: #ffffff;
 }
 </style>

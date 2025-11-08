@@ -13,7 +13,7 @@
 .dark-theme {
   --primary-color: #7c8ff0;
   --secondary-color: #8e5bb8;
-  --text-color: #e0e0e0;
+  --text-color: #ffffff;
   --bg-light: #1e1e2e;
   --bg-white: #2a2a3e;
   --border-color: #3a3a4e;
@@ -130,5 +130,5 @@ p {
 }
 
 .dark-theme p {
-  color: #b0b0b0;
+  color: #ffffff;
 }

@@ -251,6 +251,110 @@
             </p>
           </div>
 
+          <!-- Детальное объяснение формул -->
+          <div class="formula-explanation-section">
+            <h4>📐 Биомеханические формулы и расчеты:</h4>
+
+            <div class="formula-card">
+              <div class="formula-title">Момент силы (M):</div>
+              <div class="formula-display">
+                <code>M = F × d</code>
+              </div>
+              <div class="formula-breakdown">
+                <div class="param-item">
+                  <span class="param-letter">M</span>
+                  <span class="param-name">Момент силы</span>
+                  <span class="param-value">{{ simulationResults.moment.toFixed(2) }} г·мм</span>
+                  <span class="param-explanation">Это вращающий эффект, создаваемый силой. Момент определяет, насколько сильно будет вращаться зуб. Чем больше момент, тем больше корень будет двигаться.</span>
+                </div>
+                <div class="param-item">
+                  <span class="param-letter">F</span>
+                  <span class="param-name">Сила</span>
+                  <span class="param-value">{{ params.force }} г</span>
+                  <span class="param-explanation">Величина силы, приложенной к зубу через брекет или другой элемент. Измеряется в граммах. Это та сила, которую мы создаем с помощью дуги, эластиков или пружин.</span>
+                </div>
+                <div class="param-item">
+                  <span class="param-letter">d</span>
+                  <span class="param-name">Плечо силы (M/F)</span>
+                  <span class="param-value">{{ mfRatio }} мм</span>
+                  <span class="param-explanation">Расстояние от точки приложения силы до центра сопротивления. Чем больше плечо, тем больше момент при той же силе. В ортодонтии используется соотношение M/F для контроля типа перемещения.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula-card">
+              <div class="formula-title">Положение центра сопротивления (ЦС):</div>
+              <div class="formula-display">
+                <code>h<sub>ЦС</sub> = L / 3</code>
+              </div>
+              <div class="formula-breakdown">
+                <div class="param-item">
+                  <span class="param-letter">h<sub>ЦС</sub></span>
+                  <span class="param-name">Расстояние ЦС от альвеолярного гребня</span>
+                  <span class="param-value">{{ simulationResults.crDistance.toFixed(2) }} мм</span>
+                  <span class="param-explanation">Это точка, через которую должна проходить сила для корпусного перемещения без вращения. ЦС - это "балансировочная точка" зуба.</span>
+                </div>
+                <div class="param-item">
+                  <span class="param-letter">L</span>
+                  <span class="param-name">Длина корня</span>
+                  <span class="param-value">{{ params.rootLength }} мм</span>
+                  <span class="param-explanation">Полная длина корня зуба от верхушки (апекса) до альвеолярного гребня. Определяет положение ЦС и влияет на тип перемещения.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula-card">
+              <div class="formula-title">Соотношение момент/сила (M/F):</div>
+              <div class="formula-display">
+                <code>M/F = {{ mfRatio }}:1</code>
+              </div>
+              <div class="formula-breakdown">
+                <div class="param-item">
+                  <span class="param-name">Что это значит:</span>
+                  <span class="param-explanation">
+                    <strong>M/F = 0:</strong> Только сила без момента → Наклон (коронка двигается больше)<br>
+                    <strong>M/F = 7-8:1:</strong> Сила + момент → Корпусное перемещение (коронка и корень одинаково)<br>
+                    <strong>M/F = 10-12:1:</strong> Большой момент → Корневое перемещение/торк (корень двигается больше)<br><br>
+                    Текущее значение <strong>{{ mfRatio }}:1</strong> означает, что на каждый грамм силы создается момент в {{ mfRatio }} грамм·мм.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula-card">
+              <div class="formula-title">Скорость перемещения:</div>
+              <div class="formula-display">
+                <code>v = k × (F/F<sub>opt</sub>) × t</code>
+              </div>
+              <div class="formula-breakdown">
+                <div class="param-item">
+                  <span class="param-letter">v</span>
+                  <span class="param-name">Скорость перемещения</span>
+                  <span class="param-value">≈ {{ (simulationResults.crownDisplacement / params.duration).toFixed(3) }} мм/день</span>
+                  <span class="param-explanation">Скорость, с которой зуб перемещается. Зависит от величины силы и физиологических возможностей тканей пародонта.</span>
+                </div>
+                <div class="param-item">
+                  <span class="param-letter">k</span>
+                  <span class="param-name">Коэффициент</span>
+                  <span class="param-value">≈ 0.033 мм/день</span>
+                  <span class="param-explanation">Базовая скорость перемещения при оптимальной силе. Примерно 1 мм в месяц - это физиологичная скорость ремоделирования кости.</span>
+                </div>
+                <div class="param-item">
+                  <span class="param-letter">F<sub>opt</sub></span>
+                  <span class="param-name">Оптимальная сила</span>
+                  <span class="param-value">{{ forceRange.optimal }} г</span>
+                  <span class="param-explanation">Сила, при которой достигается максимально эффективное и безопасное перемещение без повреждения тканей.</span>
+                </div>
+                <div class="param-item">
+                  <span class="param-letter">t</span>
+                  <span class="param-name">Время воздействия</span>
+                  <span class="param-value">{{ params.duration }} дней</span>
+                  <span class="param-explanation">Продолжительность действия силы на зуб. Чем дольше действует оптимальная сила, тем больше перемещение.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="clinical-recommendations">
             <h4>Клинические рекомендации:</h4>
             <ul>
@@ -270,7 +374,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, reactive } from 'vue'
+import { ref, computed, reactive, watch } from 'vue'
 import { calculateCenterOfResistance, calculateOptimalForce } from '@/utils/biomechanics'
 
 const params = reactive({
@@ -284,6 +388,8 @@ const params = reactive({
 const mfRatio = ref(7)
 const isSimulating = ref(false)
 const simulationResults = ref<any>(null)
+const animationProgress = ref(0)
+const showFormulaExplanation = ref(false)
 
 // Динамический диапазон силы
 const forceRange = computed(() => {
@@ -335,12 +441,13 @@ const toothColor = computed(() => {
   return isSimulating.value ? '#e8f4f8' : '#f0f0f0'
 })
 
-// Трансформация зуба (для анимации перемещения)
+// Трансформация зуба (для анимации перемещения с плавным прогрессом)
 const toothTransform = computed(() => {
   if (!isSimulating.value || !simulationResults.value) return ''
 
-  const crownMove = simulationResults.value.crownDisplacement * 50 // масштаб
-  const rootMove = simulationResults.value.rootDisplacement * 50
+  const progress = animationProgress.value
+  const crownMove = simulationResults.value.crownDisplacement * 50 * progress
+  const rootMove = simulationResults.value.rootDisplacement * 50 * progress
 
   const avgMove = (crownMove + rootMove) / 2
   const rotation = (crownMove - rootMove) * 2
@@ -366,9 +473,29 @@ const momentArc = computed(() => {
   return `M ${cx + radius} ${cy} A ${radius} ${radius} 0 0 1 ${cx} ${cy + radius}`
 })
 
+// Анимация прогресса
+const animateMovement = () => {
+  animationProgress.value = 0
+  const duration = 2000 // 2 секунды
+  const steps = 60
+  const stepDuration = duration / steps
+  let currentStep = 0
+
+  const interval = setInterval(() => {
+    currentStep++
+    animationProgress.value = currentStep / steps
+
+    if (currentStep >= steps) {
+      clearInterval(interval)
+      animationProgress.value = 1
+    }
+  }, stepDuration)
+}
+
 // Запуск симуляции
 const runSimulation = () => {
   isSimulating.value = true
+  animationProgress.value = 0
 
   const cr = calculateCenterOfResistance('single', params.rootLength, 0)
 
@@ -446,13 +573,18 @@ const runSimulation = () => {
     rootDisplacement,
     assessment,
     assessmentClass,
-    recommendations
+    recommendations,
+    moment: params.force * mfRatio.value
   }
+
+  // Запуск плавной анимации
+  animateMovement()
 }
 
 const resetSimulation = () => {
   isSimulating.value = false
   simulationResults.value = null
+  animationProgress.value = 0
 }
 
 const getMovementTypeName = (type: string) => {
@@ -642,6 +774,129 @@ input[type="range"] {
   text-align: center;
   padding: 3rem;
   color: #999;
+}
+
+/* Детальное объяснение формул */
+.formula-explanation-section {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 12px;
+  border: 2px solid #0ea5e9;
+}
+
+.formula-explanation-section h4 {
+  color: #0c4a6e;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.formula-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formula-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.formula-card:last-child {
+  margin-bottom: 0;
+}
+
+.formula-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #dbeafe;
+}
+
+.formula-display {
+  background: #fef3c7;
+  border: 3px dashed #f59e0b;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.formula-display code {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #92400e;
+  font-family: 'Courier New', monospace;
+}
+
+.formula-breakdown {
+  display: grid;
+  gap: 1rem;
+}
+
+.param-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  transition: all 0.3s ease;
+}
+
+.param-item:hover {
+  background: #eff6ff;
+  border-left-color: #1d4ed8;
+}
+
+.param-letter {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1e40af;
+  font-family: 'Times New Roman', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.param-name {
+  grid-column: 2;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1.05rem;
+}
+
+.param-value {
+  grid-column: 2;
+  font-weight: bold;
+  color: #0891b2;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.param-explanation {
+  grid-column: 2;
+  color: #475569;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+/* Анимация для зуба */
+svg path, svg circle, svg line {
+  transition: all 0.1s ease-out;
 }
 
 @media (max-width: 1200px) {

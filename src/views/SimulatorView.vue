@@ -473,23 +473,29 @@ const momentArc = computed(() => {
   return `M ${cx + radius} ${cy} A ${radius} ${radius} 0 0 1 ${cx} ${cy + radius}`
 })
 
-// Анимация прогресса
+// Улучшенная анимация с easing
+const easeInOutCubic = (t: number): number => {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+}
+
 const animateMovement = () => {
   animationProgress.value = 0
-  const duration = 2000 // 2 секунды
-  const steps = 60
-  const stepDuration = duration / steps
-  let currentStep = 0
+  const duration = 3000 // 3 секунды для более плавной анимации
+  const startTime = Date.now()
 
-  const interval = setInterval(() => {
-    currentStep++
-    animationProgress.value = currentStep / steps
+  const animate = () => {
+    const elapsed = Date.now() - startTime
+    const linearProgress = Math.min(elapsed / duration, 1)
+    animationProgress.value = easeInOutCubic(linearProgress)
 
-    if (currentStep >= steps) {
-      clearInterval(interval)
+    if (linearProgress < 1) {
+      requestAnimationFrame(animate)
+    } else {
       animationProgress.value = 1
     }
-  }, stepDuration)
+  }
+
+  requestAnimationFrame(animate)
 }
 
 // Запуск симуляции
@@ -640,6 +646,14 @@ const getMovementTypeName = (type: string) => {
   color: #2c3e50;
   border-bottom: 2px solid #667eea;
   padding-bottom: 0.5rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .controls-panel h3,
+.dark-theme .visualization-panel h3,
+.dark-theme .results-panel h3 {
+  color: var(--text-color);
+  border-bottom-color: #7c8ff0;
 }
 
 .input-group {
@@ -680,6 +694,12 @@ input[type="range"] {
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .tooth-canvas {
+  background: rgba(42, 42, 62, 0.6);
+  border-color: var(--border-color);
 }
 
 .legend {
@@ -690,6 +710,11 @@ input[type="range"] {
   background: #f8f9fa;
   border-radius: 8px;
   flex-wrap: wrap;
+  transition: background 0.3s ease;
+}
+
+.dark-theme .legend {
+  background: rgba(30, 30, 46, 0.6);
 }
 
 .legend-item {
@@ -714,12 +739,23 @@ input[type="range"] {
   background: #f8f9fa;
   border-radius: 6px;
   border-left: 3px solid #667eea;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .result-item {
+  background: rgba(30, 30, 46, 0.6);
+  border-left-color: #7c8ff0;
 }
 
 .result-item strong {
   color: #2c3e50;
   display: block;
   margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.dark-theme .result-item strong {
+  color: var(--text-color);
 }
 
 .result-item p {
@@ -729,6 +765,10 @@ input[type="range"] {
 
 .result-item.assessment {
   background: linear-gradient(135deg, #f0f4ff 0%, #fef0ff 100%);
+}
+
+.dark-theme .result-item.assessment {
+  background: linear-gradient(135deg, rgba(124, 143, 240, 0.2) 0%, rgba(142, 91, 184, 0.2) 100%);
 }
 
 .optimal {
@@ -752,12 +792,23 @@ input[type="range"] {
   background: #e8f5e9;
   border-radius: 8px;
   border-left: 4px solid #4caf50;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .clinical-recommendations {
+  background: rgba(76, 175, 80, 0.15);
+  border-left-color: #66bb6a;
 }
 
 .clinical-recommendations h4 {
   color: #2e7d32;
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.dark-theme .clinical-recommendations h4 {
+  color: #81c784;
 }
 
 .clinical-recommendations ul {
@@ -783,6 +834,12 @@ input[type="range"] {
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border-radius: 12px;
   border: 2px solid #0ea5e9;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .formula-explanation-section {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.1) 100%);
+  border-color: #38bdf8;
 }
 
 .formula-explanation-section h4 {
@@ -790,6 +847,11 @@ input[type="range"] {
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
   text-align: center;
+  transition: color 0.3s ease;
+}
+
+.dark-theme .formula-explanation-section h4 {
+  color: #7dd3fc;
 }
 
 .formula-card {
@@ -798,7 +860,12 @@ input[type="range"] {
   border-radius: 10px;
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.dark-theme .formula-card {
+  background: rgba(42, 42, 62, 0.6);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .formula-card:hover {
@@ -826,6 +893,12 @@ input[type="range"] {
   padding: 1.5rem;
   text-align: center;
   margin-bottom: 1.5rem;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-theme .formula-display {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: #fbbf24;
 }
 
 .formula-display code {
@@ -851,9 +924,19 @@ input[type="range"] {
   transition: all 0.3s ease;
 }
 
+.dark-theme .param-item {
+  background: rgba(30, 30, 46, 0.6);
+  border-left-color: #60a5fa;
+}
+
 .param-item:hover {
   background: #eff6ff;
   border-left-color: #1d4ed8;
+}
+
+.dark-theme .param-item:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-left-color: #3b82f6;
 }
 
 .param-letter {
@@ -894,9 +977,116 @@ input[type="range"] {
   text-align: justify;
 }
 
-/* Анимация для зуба */
+/* Улучшенная анимация для зуба */
 svg path, svg circle, svg line {
-  transition: all 0.1s ease-out;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+svg path:hover {
+  filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.4));
+}
+
+.tooth-canvas svg {
+  transition: all 0.3s ease;
+}
+
+.tooth-canvas:hover svg {
+  transform: scale(1.02);
+}
+
+/* Добавить пульсацию для ЦС */
+svg circle {
+  animation: crPulse 2s ease-in-out infinite;
+}
+
+@keyframes crPulse {
+  0%, 100% {
+    r: 6;
+    opacity: 1;
+  }
+  50% {
+    r: 8;
+    opacity: 0.8;
+  }
+}
+
+/* Анимация для векторов силы */
+svg line {
+  stroke-dasharray: 5, 5;
+  animation: dashMove 1s linear infinite;
+}
+
+@keyframes dashMove {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+/* Плавное появление карточек результатов */
+.result-item {
+  animation: slideInUp 0.5s ease-out backwards;
+}
+
+.result-item:nth-child(1) { animation-delay: 0.1s; }
+.result-item:nth-child(2) { animation-delay: 0.15s; }
+.result-item:nth-child(3) { animation-delay: 0.2s; }
+.result-item:nth-child(4) { animation-delay: 0.25s; }
+.result-item:nth-child(5) { animation-delay: 0.3s; }
+.result-item:nth-child(6) { animation-delay: 0.35s; }
+.result-item:nth-child(7) { animation-delay: 0.4s; }
+.result-item:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Улучшенные эффекты для формул */
+.formula-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.formula-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.formula-card:hover::before {
+  left: 100%;
+}
+
+/* Интерактивные параметры */
+.param-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.param-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.4s ease;
+}
+
+.param-item:hover::after {
+  width: 100%;
 }
 
 @media (max-width: 1200px) {
